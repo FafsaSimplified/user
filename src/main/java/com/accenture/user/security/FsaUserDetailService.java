@@ -19,6 +19,7 @@ public class FsaUserDetailService implements UserDetailsService {
     private static final Logger LOGGER = LoggerFactory.getLogger(FsaUserDetailService.class);
     private final UserDao userDao;
     private final JwtProvider jwtProvider;
+    //
 
     @Autowired
     public FsaUserDetailService(UserDao userDao, JwtProvider jwtProvider) {
