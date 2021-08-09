@@ -32,6 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
+/.mvn
+bin
+
 # property files
 src/main/resources/application-prod.properties
 src/main/resources/application-dev.properties
