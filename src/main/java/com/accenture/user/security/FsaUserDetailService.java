@@ -29,7 +29,7 @@ public class FsaUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(username).orElseThrow(() ->
+        User user = userDao.findByUsernameOrEmailOrPhone(username).orElseThrow(() ->
                 new UsernameNotFoundException(String.format("User with username %s has not been found.", username)));
 
         return withUsername(user.getUsername())
@@ -41,6 +41,7 @@ public class FsaUserDetailService implements UserDetailsService {
                 .disabled(false)
                 .build();
     }
+
 
     public Optional<UserDetails> loadUserByJwtTokenRSA256(String jwtToken) {
         String username = jwtProvider.getUsername(jwtToken);

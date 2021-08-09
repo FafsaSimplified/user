@@ -20,7 +20,7 @@ public class LoginInfoValidator implements ConstraintValidator<ValidLoginDto, Lo
 
     @Override
     public boolean isValid(LoginDto loginDto, ConstraintValidatorContext constraintValidatorContext) {
-        if (loginDto.getUsername() == null && loginDto.getEmail() == null && loginDto.getPhone() == null) {
+        if (loginDto.getId() == null) {
             constraintValidatorContext.disableDefaultConstraintViolation();
             constraintValidatorContext
                     .buildConstraintViolationWithTemplate("Either one of username, email or phone number must be provided")

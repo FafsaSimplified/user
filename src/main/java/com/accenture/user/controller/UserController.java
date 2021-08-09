@@ -49,20 +49,6 @@ public class UserController {
                                   @RequestParam(required = false) Map<String, String> filters) {
         return userService.getAllUsers(page, limit, filters);
     }
-
-    @PostMapping("/session")
-    @ResponseStatus(HttpStatus.CREATED)
-    public User login(@RequestBody @Valid LoginDto loginDto, HttpServletResponse response) {
-        final User user = userService.loadAuthenticatedUser(loginDto.getUsername(), loginDto.getPassword())
-                .orElseThrow(() -> new HttpServerErrorException(HttpStatus.UNAUTHORIZED, "Login Failed"));
-        final Cookie sessionCookie = jwtProvider.createSessionCookie(user)
-                .orElseThrow(() -> new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR, "token creation has failed."));
-        response.addCookie(sessionCookie);
-        final User testUser = new User();
-        testUser.setUsername("testUsername");
-        testUser.setFirstName("testFirstname");
-        return user.generalAccess();
-    }
 }
 
 
