@@ -48,7 +48,14 @@ public class AuthController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "token creation has failed."));
         response.addCookie(sessionCookie);
         return user.generalAccess();
+    }
 
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void logout(HttpServletResponse response){
+        final Cookie sessionCookie = new Cookie("session", null);
+        sessionCookie.setPath("/");
+        response.addCookie(sessionCookie);
     }
 
     @PostMapping("/registration/checkDob")
@@ -81,7 +88,6 @@ public class AuthController {
         return true;
     }
 
-    // TODO: 8/8/2021 implement sign up
     @PostMapping("/registration/register")
     @ResponseStatus(HttpStatus.CREATED)
     public User registerANewUser(@RequestBody @Valid SignUpDto signUpDto) {

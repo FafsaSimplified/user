@@ -75,6 +75,8 @@ public class AuthService {
             // uncomment actual code
             addedUser = userDao.save(user);
             this.sqsService.pushToSQS(addedUser.getEmail(), addedUser.getFirstName());
+
+            // test code
             // this.sqsService.pushToSQS(signUpDto.getEmail(), signUpDto.getFirstName());
 
         } catch (DataIntegrityViolationException e) {

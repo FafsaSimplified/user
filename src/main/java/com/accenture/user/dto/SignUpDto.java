@@ -17,7 +17,7 @@ public class SignUpDto {
     @Pattern(regexp = "[a-zA-Z\\d]{6,30}")
     private String username;
     @Size(min = 8, max = 30)
-//    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\\d@$!%*#?&]{8,30}$")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\\d@$!%*#?&]{8,30}$")
     private String password;
     @Pattern(regexp = "(\\d){9}")
     private String ssn;
@@ -26,7 +26,7 @@ public class SignUpDto {
     private String email;
     @Pattern(regexp = "(\\d){10}")
     private String cellPhone;
-//    @Pattern(regexp = "(^(\\d){10}$)")
+    //    @Pattern(regexp = "(^(\\d){10}$)")
     private String homePhone;
     private Boolean smsOptIn;
     private String streetAddress;
