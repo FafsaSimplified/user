@@ -105,6 +105,17 @@ public class User {
         this.role = new UserRole(Role.CUSTOMER.name());
     }
 
+    public User(long id, String username, String password, String role, String fname, String lname, String email, String cellPhone) {
+        this.setId(id);
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setRole(new UserRole(role));
+        this.setFirstName(fname);
+        this.setLastName(lname);
+        this.setEmail(email);
+        this.setCellPhone(cellPhone);
+    }
+
 
     public User generalAccess() {
         User generalUser = new User(this);

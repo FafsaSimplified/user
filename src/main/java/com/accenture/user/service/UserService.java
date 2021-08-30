@@ -48,7 +48,6 @@ public class UserService {
 //    }
     public User signUp(User user) {
         LOGGER.info("New user attempting to sign up");
-        user.setPassword("password");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(new UserRole("CUSTOMER"));
 //        String now = ZonedDateTime.now(ZoneOffset.UTC)
