@@ -1,5 +1,6 @@
 package com.accenture.user.dto;
 
+import com.accenture.user.entity.UserRole;
 import com.accenture.user.validation.annotation.ValidSignUpDto;
 
 import javax.validation.constraints.Email;
@@ -35,6 +36,19 @@ public class SignUpDto {
     @Pattern(regexp = "(\\d){5,9}")
     private String zipCode;
     private String cqas;
+
+    public SignUpDto(String username, String password, String fname, String lname,
+                     String mname, String ssn, String dob, String email, String cellPhone) {
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setFirstName(fname);
+        this.setLastName(lname);
+        this.setMiddleName(mname);
+        this.setSsn(ssn);
+        this.setDob(dob);
+        this.setEmail(email);
+        this.setCellPhone(cellPhone);
+    }
 
     public String getFirstName() {
         return firstName;

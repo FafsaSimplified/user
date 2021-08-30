@@ -50,7 +50,7 @@ public class AuthController {
         return user.generalAccess();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/logout")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void logout(HttpServletResponse response){
         final Cookie sessionCookie = new Cookie("session", null);

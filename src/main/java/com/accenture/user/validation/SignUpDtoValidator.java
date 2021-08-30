@@ -28,20 +28,20 @@ public class SignUpDtoValidator implements ConstraintValidator<ValidSignUpDto, S
 
     private boolean assertPasswordValid(SignUpDto signUpDto) {
         if (signUpDto.getPassword() == null) {
-            LOGGER.error("password must contain at least 8 characters");
+            LOGGER.error("password must be provided");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "password must be provided");
         }
         String password = signUpDto.getPassword();
         if (!password.matches("^.*[a-z].*$")) {
-            LOGGER.error("password must contain at least 8 characters");
+            LOGGER.error("password must contain at least one lowercase letter");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "password must contain at least one lowercase letter");
         }
         if (!password.matches("^.*[A-Z].*$")) {
-            LOGGER.error("password must contain at least 8 characters");
+            LOGGER.error("password must contain at least one uppercase letter");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "password must contain at least one uppercase letter");
         }
         if (!password.matches("^.*\\d.*$")) {
-            LOGGER.error("password must contain at least 8 characters");
+            LOGGER.error("password must contain at least one digit");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "password must contain at least one digit");
         }
         if (!password.matches("^[a-zA-Z\\d@$!%*#?&]{8,30}$")) {
